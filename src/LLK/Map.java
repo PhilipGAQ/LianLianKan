@@ -40,7 +40,7 @@ public class Map {
 			list.add(k%10);
 			k=k+1;
 		}
-
+		// System.out.println(list);
 		
 		for(int i=0;i<n;i++){
 			for(int j=0;j<n;j++){
@@ -49,7 +49,12 @@ public class Map {
 				list.remove(index);	
 			}
 		}
-
+		// System.out.println(list);]
+		// for (int i=0;i<n;i++){
+		// 	for (int j=0;j<n;j++){
+		// 		System.out.println(map[i][j]);
+		// 	}
+		// }
 	return map;//返回一个图片随机生成的地图数组
 
 	}

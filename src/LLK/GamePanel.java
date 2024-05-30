@@ -34,10 +34,11 @@ public class GamePanel extends JPanel implements ActionListener ,MouseListener,K
 	public static final int LINKBYHORIZONTAL = 1,LINKBYVERTICAL = 2,LINKBYONECORNER = 3,LINKBYTWOCORNER = 4;
 	public static final int BLANK_STATE = -1;
 	
-	public GamePanel(int n){
+	public GamePanel(int num){
 		setSize(600, 600);
 		count = 10;
-		mapUtil = new Map(count, n);
+		n=num;
+		mapUtil = new Map(count, num);
 		map = mapUtil.getMap();//获取初始时，图片种类为count,行列数为n的地图信息
 		this.setVisible(true); 
 		this.addKeyListener(this);
@@ -59,19 +60,31 @@ public class GamePanel extends JPanel implements ActionListener ,MouseListener,K
 	
 	
 	public void paint(Graphics g){
-		g.clearRect(0, 0, 800, 30);
+		// g.clearRect(0, 0, 800, 30);
 		
-		for(int i=0;i<n;i++){
-			for(int j=0;j<n;j++){
-				if(map[i][j]!=BLANK_STATE){
-					g.drawImage(pics[map[i][j]],leftX+j*50,leftY+i*50,50,50,this);
-				}else{
-					g.clearRect(leftX+j*50,leftY+i*50,50,50);
-				}
-			}
-		}
-		
-	}
+		// for(int i=0;i<n;i++){
+		// 	for(int j=0;j<n;j++){
+		// 		if(map[i][j]!=BLANK_STATE){
+		// 			g.drawImage(pics[map[i][j]],leftX+j*50,leftY+i*50,50,50,this);
+		// 		}else{
+		// 			g.clearRect(leftX+j*50,leftY+i*50,50,50);
+		// 		}
+			
+		// }}
+		int gridSize=n;
+		super.paintComponent(g);
+        int cellWidth = getWidth() / gridSize;
+        int cellHeight = getHeight() / gridSize;
+
+        for (int i = 0; i < gridSize; i++) {
+            for (int j = 0; j < gridSize; j++) {
+                int imageIndex = map[i][j];
+                if (imageIndex >= 0 && imageIndex < pics.length && pics[imageIndex] != null) {
+                    g.drawImage(pics[imageIndex], j * cellWidth, i * cellHeight, cellWidth, cellHeight, this);
+                }
+            }
+        }
+	}		
 	
 
 	//判断是否可以水平相连

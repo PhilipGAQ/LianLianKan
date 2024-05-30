@@ -42,7 +42,7 @@ public class GameClient extends JFrame{
 		this.getContentPane().add(panel,BorderLayout.SOUTH);
 		this.getContentPane().add(panel2,BorderLayout.CENTER);
 //		this.getContentPane().add(panel3,BorderLayout.SOUTH);
-		this.setSize(800,700);
+		this.setSize(600,600);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setTitle("连连看");
 		this.setVisible(true);
